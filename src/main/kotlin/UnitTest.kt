@@ -3,6 +3,10 @@ import junit.framework.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
+
+var fakeMonarchHero: MonarchHero = UnitTest.FakeMonarchFactory.createRandomHero() as MonarchHero
+var fakeHeroes = mutableListOf<Hero>();
+
 class UnitTest {
     @Test
     public fun test1CaoDodgeAttack(): Unit {
@@ -44,6 +48,7 @@ class UnitTest {
         }
     }
 
+
     object FakeNonmoarchFactory: GameObjectFactory {
         var count = 0
         var last: WeiHero? = null
@@ -58,7 +63,7 @@ class UnitTest {
                 1->XuChu(MinisterRole())
                 else->XiaHouyuan(MinisterRole())
             }
-            val cao = monarchHero as CaoCao
+            val cao = fakeMonarchHero as CaoCao
             if (last == null)
                 cao.helper = hero
             else
